@@ -1,3 +1,9 @@
+# jabeldmc
+.DS_Store
+package-lock.json
+poc/
+
+
 # Logs
 logs
 *.log

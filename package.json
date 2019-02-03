@@ -1,0 +1,26 @@
+{
+  "name": "fsfp-homework-13-sequelize",
+  "version": "1.0.0",
+  "description": "Full Stack Flex Program Homework 13: Sequelize",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jabeldmc/fsfp-homework-13-sequelize.git"
+  },
+  "author": "jabeldmc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jabeldmc/fsfp-homework-13-sequelize/issues"
+  },
+  "homepage": "https://github.com/jabeldmc/fsfp-homework-13-sequelize#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "mysql2": "^1.6.4",
+    "nodemon": "^1.18.9"
+  }
+}

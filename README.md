@@ -7,6 +7,12 @@ Full Stack Flex Program Homework 13: Sequelize
 
 ## Build 5
 
+* Add customer to view.
+* Completed tier 2.
+* Completed bonus.
+
+## Build 5
+
 * Add customer to model.
 
 ## Build 4

@@ -28,6 +28,24 @@ const createObject = function( formData ) {
 }
 
 
+/*** FUNCTION createCustomerData()
+
+Maps fields of form data to customer data.
+
+***/
+
+const createCustomerData = function( formDataObject ) {
+    console.group( 'createCustomerData()' );
+
+    var customerData = {
+        customerName : formDataObject[ 'customer-name' ]
+    };
+
+    console.groupEnd();
+    return customerData;
+}
+
+
 /*** FUNCTION createBurgerData()
 
 Maps fields of form data to burget data.
@@ -38,7 +56,8 @@ const createBurgerData = function( formDataObject ) {
     console.group( 'createBurgerData()' );
 
     var burgerData = {
-        burgerName : formDataObject[ 'burger-name' ]
+        burgerName : formDataObject[ 'burger-name' ] ,
+        customerName : formDataObject[ 'customer-name' ]
     };
 
     console.groupEnd();
@@ -58,9 +77,29 @@ const handleFormSubmit = async function( event ) {
 
     // get burger data from form data
     var formData = $( '#create-burger-form' ).serializeArray();
-    var requestData = createBurgerData( createObject( formData ) );
+    console.log( 'formData:' , formData );
+
+    // create new customer
+    var requestData = createCustomerData( createObject( formData ) );
+    console.log( 'requestData:' , requestData );
+    await $.ajax(
+        {
+            url : '/api/customer/create' ,
+            method : 'POST' ,
+            data : requestData ,
+            dataType: 'json'
+        }
+    )
+    .then(
+        ( data , textStatus , jqXHR ) => {
+            console.log( 'data: ' , data );
+            console.log( 'textStatus: ' , textStatus );
+        }
+    );
 
     // create new burger
+    var requestData = createBurgerData( createObject( formData ) );
+    console.log( 'requestData:' , requestData );
     await $.ajax(
         {
             url : '/api/burger/create' ,
@@ -71,8 +110,8 @@ const handleFormSubmit = async function( event ) {
     )
     .then(
         ( data , textStatus , jqXHR ) => {
-            console.log( data );
-            console.log( textStatus );
+            console.log( 'data: ' , data );
+            console.log( 'textStatus: ' , textStatus );
         }
     );
 

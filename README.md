@@ -5,6 +5,10 @@ Full Stack Flex Program Homework 13: Sequelize
 
 # History
 
+## Build 5
+
+* Add customer to model.
+
 ## Build 4
 
 * Create burger HTML routes.

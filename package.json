@@ -4,7 +4,13 @@
   "description": "Full Stack Flex Program Homework 13: Sequelize",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "database-create": "mysql --host=localhost --user=root --password=gaogaofire --execute=\"DROP DATABASE IF EXISTS fsfp_burger\" && mysql --host=localhost --user=root --password=gaogaofire --execute=\"CREATE DATABASE fsfp_burger_2\"",
+    "database-seed": "export NODE_ENV=development && node_modules/.bin/sequelize db:migrate && node_modules/.bin/sequelize db:seed:all",
+    "database-undo-seed": "export NODE_ENV=development && node_modules/.bin/sequelize db:seed:undo:all && node_modules/.bin/sequelize db:migrate:undo",
+    "poc": "export NODE_ENV=development && nodemon poc/poc.js",
+    "develop": "export NODE_ENV=development && nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +27,8 @@
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "mysql2": "^1.6.4",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "sequelize": "^4.42.0",
+    "sequelize-cli": "^5.4.0"
   }
 }

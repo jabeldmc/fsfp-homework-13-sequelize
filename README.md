@@ -5,6 +5,10 @@ Full Stack Flex Program Homework 13: Sequelize
 
 # History
 
+## Build 2
+
+* Setup Sequelize models, migrations, and seeders.
+
 ## Build 1
 
-* Project setup.
+* Setup project.

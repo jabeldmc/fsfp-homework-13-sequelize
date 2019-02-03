@@ -11,13 +11,30 @@ $ node_modules/.bin/sequelize model:create --name Burger --attributes burgerName
 ***/
 
 'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const Burger = sequelize.define('Burger', {
-    burgerName: DataTypes.STRING,
-    isDevoured: DataTypes.BOOLEAN
-  }, {});
-  Burger.associate = function(models) {
-    // associations can be defined here
-  };
-  return Burger;
+
+module.exports = ( sequelize , DataTypes ) => {
+    const Burger = sequelize.define(
+        'Burger',
+        {
+            burgerName: {
+                type: DataTypes.STRING ,
+                allowNull: false ,
+                validate: {
+                    notEmpty: true
+                }
+            } ,
+            isDevoured: {
+                type: DataTypes.BOOLEAN ,
+                allowNull: false ,
+                defaultValue: false
+            }
+        } ,
+        {}
+    );
+
+    Burger.associate = function( models ) {
+        // associations can be defined here
+      };
+
+    return Burger;
 };

@@ -7,8 +7,8 @@
     "database-create": "mysql --host=localhost --user=root --password=gaogaofire --execute=\"DROP DATABASE IF EXISTS fsfp_burger\" && mysql --host=localhost --user=root --password=gaogaofire --execute=\"CREATE DATABASE fsfp_burger_2\"",
     "database-seed": "export NODE_ENV=development && node_modules/.bin/sequelize db:migrate && node_modules/.bin/sequelize db:seed:all",
     "database-undo-seed": "export NODE_ENV=development && node_modules/.bin/sequelize db:seed:undo:all && node_modules/.bin/sequelize db:migrate:undo",
-    "poc": "export NODE_ENV=development && nodemon poc/poc.js",
-    "develop": "export NODE_ENV=development && nodemon server.js",
+    "poc": "export NODE_ENV=development && export SEQUELIZE_FORCE_SYNC=false && nodemon poc/poc.js",
+    "develop": "export NODE_ENV=development && export SEQUELIZE_FORCE_SYNC=false && nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },

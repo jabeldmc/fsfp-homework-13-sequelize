@@ -14,8 +14,8 @@ console.groupEnd();
 // require
 const express = require( 'express' );
 const bodyParser = require( 'body-parser' );
-// const handlebars = require( 'express-handlebars' );
-var models = require( './models' );
+const models = require( './models' );
+const handlebars = require( 'express-handlebars' );
 
 
 // global variables
@@ -43,11 +43,11 @@ const initialize = function() {
     app.use( express.json() );    // MIME type application/json
 
     // static directory
-    // app.use( express.static( 'static' ) );
+    app.use( express.static( 'static' ) );
 
     // render engine
-    // app.engine( 'handlebars' , handlebars( { defaultLayout : 'main' } ) );
-    // app.set( 'view engine' , 'handlebars' );
+    app.engine( 'handlebars' , handlebars( { defaultLayout : 'main' } ) );
+    app.set( 'view engine' , 'handlebars' );
 
     // routes
     var routers = require( './routers' );

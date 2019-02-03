@@ -16,6 +16,7 @@ var router = express.Router();
 
 Render home page
 
+***/
 router.get(
     '/' ,
     async ( request , response ) => {
@@ -27,13 +28,16 @@ router.get(
         console.group( '[DEBUG] request.query :' ); console.debug( request.query ); console.groupEnd();
         console.group( '[DEBUG] request.body :' ); console.debug( request.body ); console.groupEnd();
 
-        var result = await model.burger.getAll();
+        var responseData;
 
-        if( result.error ) {
-            response.json( result.error );
+        try {
+            var queryResult = await models.Burger.findAll( {} );
+            var handlebarsData = { burgers : queryResult };
+        }
+        catch ( error ) {
+            responseData = error;
         }
 
-        var handlebarsData = { burgers : result.result };
         console.group( '[DEBUG] handlebarsData :' ); console.debug( handlebarsData ); console.groupEnd();
         response.render( 'index' , handlebarsData );
 
@@ -41,7 +45,6 @@ router.get(
         console.groupEnd();
     }
 );
-***/
 
 
 /*** GET '/api/burger/all'
@@ -64,8 +67,8 @@ router.get(
         var responseData;
 
         try {
-            var result = await models.Burger.findAll( {} );
-            responseData = result;
+            var queryResult = await models.Burger.findAll( {} );
+            responseData = queryResult;
         }
         catch ( error ) {
             responseData = error;
@@ -101,8 +104,8 @@ router.post(
 
         try {
             var burgerData = request.body;
-            var result = await models.Burger.create( burgerData );
-            responseData = result;
+            var queryResult = await models.Burger.create( burgerData );
+            responseData = queryResult;
         }
         catch( error )
         {
@@ -139,7 +142,7 @@ router.put(
         var burgerId = request.query.id;
 
         try {
-            var result = await models.Burger.update(
+            var queryResult = await models.Burger.update(
                 { isDevoured: true } ,
                 {
                     where: {
@@ -149,7 +152,7 @@ router.put(
                     }
                 }
             );
-            responseData = result;
+            responseData = queryResult;
         }
         catch ( error ) {
             responseData = error;

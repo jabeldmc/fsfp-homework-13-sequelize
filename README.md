@@ -5,6 +5,11 @@ Full Stack Flex Program Homework 13: Sequelize
 
 # History
 
+## Build 4
+
+* Create burger HTML routes.
+* Completed tier 1.
+
 ## Build 3
 
 * Create burger API routes.
